@@ -1,0 +1,491 @@
+/* =========================================
+   1. Global Resets & Base Styles
+   ========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+    overflow-x: hidden; /* Prevents horizontal scrolling on small screens */
+}
+
+/* =========================================
+   2. Navigation Bar
+   ========================================= */
+.navbar {
+    background: #2c3e50;
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.logo {
+
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white; 
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between
+}
+
+.logo-icon {
+    height:50px;
+    margin-right: 30px;
+    border-radius: 40%;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin-left: 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover {
+    color: #f39c12;
+}
+
+/* =========================================
+   3. Hero Section & Search Bar
+   ========================================= */
+.hero {
+    background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9));
+    color: white;
+    text-align: center;
+    padding: 10px 10px;
+}
+
+.hero h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.search-container {
+    max-width: 500px;
+    margin: 20px auto 0;
+    position: relative;
+}
+
+#course-search {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border-radius: 25px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.search-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #2c3e50;
+}
+
+/* =========================================
+   4. Course Grid (Desktop: 3 per row)
+   ========================================= */
+.course-listing {
+    padding: 30px 10px;
+}
+
+.category-section {
+    margin-bottom: 40px;
+}
+
+.category-section h2 {
+    font-size: 1.6rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 3px solid #3498db;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+}
+
+.course-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.course-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    /* Calculations for 3 columns with gap */
+    width: calc(33.33% - 20px); 
+    min-width: 280px; 
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+}
+
+.course-title {
+    background: #34495e;
+    color: white;
+    padding: 15px;
+    font-size: 1rem;
+    text-align: center;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.course-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+}
+
+.card-buttons {
+    padding: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.demo-button, .buy-button {
+    flex: 1;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.demo-button { background: #f39c12; color: white; }
+.buy-button { background: #2ecc71; color: white; }
+
+/* =========================================
+   5. Footer
+   ========================================= */
+.footer {
+    background: #2c3e50;
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.social-link {
+    color: #f39c12;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* =========================================
+   6. Responsive View (Mobile: 3 per row)
+   ========================================= */
+
+/* Tablet View (2 per row) */
+@media (max-width: 900px) {
+    .course-card {
+        width: calc(50% - 20px);
+    }
+}
+
+/* Phone View (3 per row) */
+@media (max-width: 600px) {
+    .course-container {
+        gap: 6px; /* Tiny gap to fit 3 items */
+        padding: 5px;
+    }
+
+    .course-card {
+        /* Force exactly 3 per row */
+        width: calc(33.33% - 4px); 
+        min-width: 0; /* Important: removes the desktop minimum width */
+        border-radius: 4px;
+    }
+
+    .course-title {
+        font-size: 0.65rem; /* Small font to fit narrow width */
+        padding: 5px;
+        min-height: 45px;
+        line-height: 1.2;
+    }
+
+    .course-image {
+        height: 70px; /* Reduced height for phone screen */
+    }
+
+    .card-buttons {
+        padding: 6px 3px;
+        flex-direction: column; /* Stack buttons to prevent overlap */
+        gap: 4px;
+    }
+
+    .demo-button, .buy-button {
+        font-size: 0.6rem; /* Smallest font for small screens */
+        padding: 4px 0;
+        width: 100%;
+    }
+
+    .hero h1 { font-size: 1.4rem; }
+    .category-section h2 { font-size: 1.1rem; }
+    .navbar { padding: 10px; }
+    .logo { font-size: 1rem; }
+}
+
+/* Styling for 1 course per row (Full Width) */
+.full-width-row .course-card {
+    width: 100% !important; /* Forces it to take the whole row */
+    max-width: 800px;       /* Optional: limits width so it doesn't look too stretched on wide monitors */
+    margin: 0 auto;        /* Centers the card */
+}
+
+/* On mobile, we still want these 3 to be 100% (not 3-per-row) */
+@media (max-width: 600px) {
+    .full-width-row .course-card {
+        width: 100% !important;
+        min-width: 100%;
+    }
+    
+    .full-width-row .course-title {
+        font-size: 1.1rem; /* Keeping font readable since the card is big */
+    }
+
+    .full-width-row .course-image {
+        height: 180px; /* Taller image for the bigger card */
+    }
+
+    .full-width-row .card-buttons {
+        flex-direction: row; /* Buttons can stay side-by-side because card is wide */
+    }
+}
+
+/* --- Stylish Logo Design --- */
+.logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif; /* A modern, rounded font */
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+}
+
+/* Style for the '@' symbol */
+.logo-at {
+    color: #27a813; /* Brand orange */
+    margin-right: 2px;
+    font-size: 1.7rem;
+}
+
+/* Style for 'coursesphere' with Gradient */
+.logo-text {
+    background: linear-gradient(to right, #cfc9c9, #3abfe3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: lowercase;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* Adding a subtle glow when you hover over the logo */
+.logo:hover .logo-text {
+    text-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
+    transform: scale(1.05);
+}
+
+/* Animation to make the logo "float" slightly */
+@keyframes logoFloat {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+    100% { transform: translateY(0); }
+}
+
+.logo {
+    animation: logoFloat 3s ease-in-out infinite;
+}
+.navbar {
+    
+    background: #2c3e50;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    /* This pushes the logo to the left and nav to the right */
+    justify-content: space-between; 
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.logo {
+    /* Ensures the logo container itself doesn't grow and center the text */
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-right: auto; /* Forcefully pushes everything else to the right */
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Desktop & Laptop Settings --- */
+.course-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: calc(33.33% - 20px); 
+    max-width: 350px; 
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.course-image {
+    width: 100%;
+    /* Set a fixed height that looks good on laptop */
+    height: 180px; 
+    /* 'contain' ensures the whole image is visible without zooming */
+    /* Use 'cover' if you want it to fill the box without white edges */
+    object-fit: cover; 
+    background-color: #eee; /* Light gray background if image is small */
+    display: block;
+}
+
+/* --- Mobile Settings (3 per row) --- */
+@media (max-width: 600px) {
+    .course-card {
+        width: calc(33.33% - 6px); 
+        min-width: 0;
+    }
+
+    .course-image {
+        /* On mobile, we MUST reduce the height so it doesn't look zoomed */
+        /* This height matches the narrow width of a 3-column mobile card */
+        height: 70px; 
+        object-fit: cover;
+    }
+}
+
+/* Special Styling for Top Courses */
+.top-featured {
+    border: 2px solid #f39c12; /* Golden border for top courses */
+    position: relative;
+}
+
+/* Optional: Add a "Trending" ribbon */
+.top-featured::before {
+    content: "TRENDING";
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    background: #e74c3c;
+    color: white;
+    font-size: 0.6rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+/* Keep the images consistent with your previous request */
+@media (max-width: 600px) {
+    .top-featured::before {
+        font-size: 0.5rem;
+        right: 2px;
+        top: 2px;
+    }
+}
+
+/* --- Course Card Reset --- */
+.course-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: calc(33.33% - 20px); 
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%; /* Ensures all cards in a row stay the same length */
+}
+
+/* --- The Image Fix --- */
+.course-image {
+    width: 100%;      /* Takes full width of the card */
+    height: auto;     /* Lets the image determine its own height */
+    display: block;
+    object-fit: scale-down; /* Prevents small images from stretching */
+}
+
+/* --- Mobile Fix (3 per row) --- */
+@media (max-width: 600px) {
+    .course-card {
+        width: calc(33.33% - 6px); /* Keeps your 3-column mobile layout */
+        margin-bottom: 10px;
+    }
+    
+    .course-image {
+        height: auto; /* Maintains the natural look on mobile */
+    }
+}
+/* --- Updated Logo Spacing --- */
+
+.logo-icon {
+    height: 50px;
+    margin-right: 07px; /* Changed from 10px to 0px to remove space */
+    border-radius: 50%;
+}
+
+/* Style for the '@' symbol */
+.logo-at {
+    color: #27a813; 
+    margin-right: 0px; /* Changed from 2px to 0px to remove space */
+    font-size: 1.7rem;
+}
+
+/* Ensure the container doesn't force a gap */
+.logo {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0px; /* Ensures no flex-gap is applied between elements */
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+}
+
